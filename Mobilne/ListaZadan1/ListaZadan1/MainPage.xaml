@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ListaZadan1.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Moja Lista Zadań" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Entry x:Name="TaskEntry" Placeholder="Wpisz zadanie" WidthRequest="250" />
+                <Button Text="Dodaj" Clicked="OnAddClicked" />
+            </HorizontalStackLayout>
+
+            <CollectionView x:Name="TasksView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,5" Padding="10">
+                            <HorizontalStackLayout Spacing="100">
+                                <Label Text="{Binding .}" VerticalOptions="Center" WidthRequest="200" />
+                                <Button Text="X" 
+                                    BackgroundColor="Red" 
+                                    Clicked="OnDeleteClicked" 
+                                    CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
